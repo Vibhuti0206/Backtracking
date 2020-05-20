@@ -1,0 +1,28 @@
+void helper(int A,int B,vector<vector<int>> &ans,vector<int> temp,int index)
+{
+   if(B==0)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    for(int j=index;j<=A;j++)
+    {
+       temp.push_back(j);
+       helper(A,B-1,ans,temp,j+1);
+       temp.pop_back();
+       
+    }
+   
+    return;
+}
+
+
+vector<vector<int> > Solution::combine(int A, int B) {
+    vector<vector<int>> ans;
+   vector<int> temp;
+   int index=1;
+   helper(A,B,ans,temp,index);
+   sort(ans.begin(),ans.end());
+   return ans;
+    
+}
